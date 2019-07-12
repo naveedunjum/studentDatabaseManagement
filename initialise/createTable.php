@@ -61,66 +61,65 @@ if($dbSuccess){
         echo "Failed";
     }
 
-
-
-
-{
-    $filename = fopen("../files/stdData", "r");
-    $i=0;
-    while(!feof($filename)){
-        $thisLine = fgets($filename);
-        $tableData[$i] = explode(",",$thisLine);
-        $i++;
-
+    $createTUser = "CREATE TABLE ".$dbName.".tUser ( ";
+    $createTUser .= "ID INT(11) AUTO_INCREMENT PRIMARY KEY, ";
+    $createTUser .= "username VARCHAR(50), password VARCHAR(50) )";
+    echo ''.$createTUser;
+    if(mysqli_query($dbConnected, $createTUser)){
+        echo '<br>Success';
     }
-    fclose($filename);
-
-    $insertRecords = "INSERT INTO ".$dbName.".studentRecords ( ";
-    $insertRecords .= "RegistrationNo, RollNo, FirstName, LastName, Parentage, Address, PhoneNo, Semester) ";
-    $insertRecords .="VALUES (";
-    $ii=0;
-    while($ii<$i){
-        // $insertRecords .="'.$tableData[$i][0].', ";
-        // $insertRecords .=".$tableData[$i][1]. ,";
-        // $insertRecords .="'.$tableData[$i][2].', ";
-        // $insertRecords .="'.$tableData[$i][3].',";
-        // $insertRecords .="'.$tableData[$i][4].',";
-        // $insertRecords .="'.$tableData[$i][5].',";
-        // $insertRecords .=".$tableData[$i][6].,";
-        // $insertRecords .=".$tableData[$i][7]";
-        // $insertRecords .=")";
-        echo "<br>".$tableData[$ii][0];
-        $insertRecords .=""'.$tableData[$ii][0]."';
 
 
-        $ii++;
+
+
+// {
+//     $filename = fopen("../files/stdData", "r");
+//     $i=0;
+//     while(!feof($filename)){
+//         $thisLine = fgets($filename);
+//         $tableData[$i] = explode(",",$thisLine);
+//         $i++;
+
+//     }
+//     fclose($filename);
+
+//     $insertRecords = "INSERT INTO ".$dbName.".studentRecords ( ";
+//     $insertRecords .= "RegistrationNo, RollNo, FirstName, LastName, Parentage, Address, PhoneNo, Semester) ";
+//     $insertRecords .="VALUES ";
+//     $ii=0;
+//     while($ii<$i-1){
+//         $insertRecords .="(".$tableData[$ii][0]; 
+//         $insertRecords .=" , ".$tableData[$ii][1]; 
+//         $insertRecords .=", ".$tableData[$ii][2]; 
+//         $insertRecords .=", ".$tableData[$ii][3]; 
+//         $insertRecords .=", ".$tableData[$ii][4]; 
+//         $insertRecords .=", ".$tableData[$ii][5]; 
+//         $insertRecords .=", ".$tableData[$ii][6]; 
+
+//         $insertRecords .=", ".$tableData[$ii][7]; 
+//         if($ii==$i-2){
+//             $insertRecords .=" ) ";
+//         }
+//         else{
+//             $insertRecords .=" ) ,";
+
+//         }
+
+//         // $insertRecords .=")";
+//         echo "<br>***".$tableData[$ii][0];
+      
+
+
+//         $ii++;
+// }
+// echo '<br>'.$insertRecords;
+// if(mysqli_query($dbConnected, $insertRecords)){
+//     echo 'Record nserted';
+// }
+// else{
+//     echo "Failed";
+// }
 }
-echo '<br>'.$insertRecords;
-
-
-
-
-}
-
-
-}
-
-?>
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
