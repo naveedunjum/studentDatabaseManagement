@@ -17,3 +17,5 @@
     }
 
 }
+
+$thisScriptName = "loginForm.php";
