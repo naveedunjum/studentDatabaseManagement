@@ -63,7 +63,7 @@ if($dbSuccess){
 
     $createTUser = "CREATE TABLE ".$dbName.".tUser ( ";
     $createTUser .= "ID INT(11) AUTO_INCREMENT PRIMARY KEY, ";
-    $createTUser .= "username VARCHAR(50), password VARCHAR(50) )";
+    $createTUser .= "username VARCHAR(50), accessLevel INT(11) NOT NULL, password VARCHAR(50) )";
     echo ''.$createTUser;
     if(mysqli_query($dbConnected, $createTUser)){
         echo '<br>Success';

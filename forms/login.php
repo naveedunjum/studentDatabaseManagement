@@ -14,13 +14,16 @@
 }
 $thisScriptName = "login.php";
 $username = $_POST["username"];
-if(isset($usertype)){
+
+
     if(isset($username)){
+        // echo ''.$username;
         $password = $_POST["password"];
         $md5password = md5($password);
+        // echo ''.$md5password;
 
         {
-            $tUser_query = "SELECT password, accessLevel, userID FROM tUser ";
+            $tUser_query = "SELECT password, accessLevel, ID FROM collegeDB.tUser ";
             $tUser_query .="WHERE username = '".$username."' ";
 
             $tUser_select = mysqli_query($dbConnected, $tUser_query);
@@ -36,11 +39,13 @@ if(isset($usertype)){
                 setcookie("userID",$userID, time()+7200,"/");
 
                 setcookie("loginAuthorised","loginAuthorised", time()+7200,"/");
-                header("Location : ../index,php");
+                header("Location: ../index.php");
+                // echo '<a href="../index.php"> Homepage</a>';
+                // echo "set";
             }
         }
     }
-}
+
 else{
 
 
@@ -48,11 +53,6 @@ else{
 
     echo '<form name="postLoginHid" action="'.$thisScriptName.'" method="post">';	
             echo '
-            <p>UserType:
-            <select name="userType">
-                <option value="admin">Admin</option>
-                <option value= "student">Student</option>
-            <select><p>
                 <P>User name: 
                 <INPUT TYPE=text NAME=username value="" SIZE=12 MAXLENGTH=16></P>
                 <P>Password: 
