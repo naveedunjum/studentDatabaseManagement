@@ -19,7 +19,7 @@ if(isset($updated)){
     Parentage = '$parent', Address = '$add', PhoneNo = $phNo ";
     
     $updateName .= " WHERE RegistrationNo = '$regNo'";
-    echo $updateName;
+    // echo $updateName;
     if(mysqli_query($dbConnected, $updateName)){
         header("Location: ../index.php");
     }
@@ -27,7 +27,7 @@ if(isset($updated)){
 }
 else{
     $grabValues = "SELECT * FROM collegeDB.studentrecords WHERE RegistrationNo = '$regNo'";
-    echo $grabValues;
+    // echo $grabValues;
     if($arr = mysqli_query($dbConnected , $grabValues)){
         $row = mysqli_fetch_array($arr);
         $firstName = $row[3];
@@ -38,7 +38,7 @@ else{
         $sem = $row[8];
         // $pwd = $row["pwd"];
         $add = $row[6];
-        echo $firstName;
+
     }
     echo '<h1>National Institute of Technology,Srinagar</h1>';
     echo '<br><hr>';

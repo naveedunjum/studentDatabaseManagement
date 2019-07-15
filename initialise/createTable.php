@@ -47,7 +47,7 @@ if($dbSuccess){
         echo 'Success';
         $insertQuery = "INSERT INTO ".$dbName.".accessControl (";
         $insertQuery .= "userType, accessLevel) ";
-        $insertQuery .= "VALUES ('admin', 99), ('student',1)";
+        $insertQuery .= "VALUES ('admin', 99), ('student',1),('librarian',21)";
         echo $insertQuery;
         if(mysqli_query($dbConnected, $insertQuery)){
             echo "insert success";
@@ -66,6 +66,22 @@ if($dbSuccess){
     $createTUser .= "username VARCHAR(50), accessLevel INT(11) NOT NULL, password VARCHAR(50) )";
     echo ''.$createTUser;
     if(mysqli_query($dbConnected, $createTUser)){
+        echo '<br>Success';
+    }
+
+    $createLibraryRecords = "CREATE TABLE ".$dbName.".libraryRecords ( ";
+    $createLibraryRecords .= "ID INT(11) AUTO_INCREMENT PRIMARY KEY, ";
+    $createLibraryRecords .= "RegistrationNo VARCHAR(50), BookCount INT(11) NOT NULL, Book1ID INT(11) NOT NULL, Book2ID INT(11) NOT NULL, Book3ID INT(11) NOT NULL, Fine INT(11) NOT NULL)";
+    echo ''.$createLibraryRecords;
+    if(mysqli_query($dbConnected, $createLibraryRecords)){
+        echo '<br>Success';
+    }
+
+    $createBook = "CREATE TABLE ".$dbName.".books ( ";
+    $createBook .= "BookID INT(11) PRIMARY KEY, ";
+    $createBook .= "BookName VARCHAR(50), Available INT(11) NOT NULL, IssuedTo VARCHAR(50))";
+    echo ''.$createBook;
+    if(mysqli_query($dbConnected, $createBook)){
         echo '<br>Success';
     }
 
