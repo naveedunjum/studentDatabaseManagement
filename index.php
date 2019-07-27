@@ -42,10 +42,12 @@ if($dbSuccess){
 		}
 		else{
 			if($accessLevel == 1){
-				$contentFile = "includes/stdMenu.php";
+				$menuFile = "includes/stdMenu.php";
+				$contentFile = "includes/stdContent.php";
 			}
 			else{
-				$contentFile = "includes/adminMenu.php";
+				$menuFile = "includes/adminMenu.php";
+				$contentFile = "includes/adminContent.php";
 			}
 		}
 
@@ -66,8 +68,15 @@ if($dbSuccess){
 <head> <title> Hello</title></head>
 <body>
 <?php
+echo '<link rel="stylesheet" href="includes/menu.css" type="text/css">';
+echo '<div class=sidebar>';
 
+	include_once($menuFile);
+echo '</div>';
+echo '<div class=content>';
 	include_once($contentFile);
+	echo '</div>';
+
 	?>
 
 </body>

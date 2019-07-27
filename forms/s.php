@@ -164,7 +164,7 @@ $count=0;
   }
   
   body{
-    background-image: url("../includes/back.jpg");
+    /* background-image: url("../includes/back.jpg"); */
   }
 .container{
   /* margin-top:100px; */
@@ -189,9 +189,9 @@ input{
 <div class="container">
   <div class ="card h-center" style="width:450px; margin:0 auto;">
       <div class="card-body">
-          <h3 style="text-align:center; color: teal">Sign Up Form</h3>
+          <h3 style="text-align:center; color: teal">Sign Form</h3>
 
-  <form action="signup.php" method=post>
+  <form action="s.php" method=post>
     <!-- usertype dropdown -->
     <div class="form-group">
         <label for="usertype">User Type:</label>
@@ -248,8 +248,6 @@ input{
     
     <button type="submit" class="btn btn-info">Sign Up</button>
   </form>
-  <a href="loginForm.php" class="btn btn-info" role="button" style="text-align:center">Login</a>
-
 </div>
 </div>
 </div>

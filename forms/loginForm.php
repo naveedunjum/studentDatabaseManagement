@@ -2,10 +2,10 @@
 { 		//	Secure Connection Script
     include('../includes/dbConfig.php'); 
     $dbSuccess = false;
-    $dbConnected = mysqli_connect($db['hostname'],$db['username'],$db['password']);
+    $dbConnected = mysqli_connect("localhost","root","");
     
     if ($dbConnected) {		
-        $dbSelected = mysqli_select_db($dbConnected, $db['database']);
+        $dbSelected = mysqli_select_db($dbConnected, "collegeDB");
         if ($dbSelected) {
             $dbSuccess = true;
         } 	
@@ -13,7 +13,7 @@
     //	END	Secure Connection Script
 }
 $thisScriptName = "loginForm.php";
-$username = $_POST["username"];
+$username = @$_POST["username"];
 
 
     if(isset($username)){
@@ -50,23 +50,68 @@ $username = $_POST["username"];
                 echo "Login Failed";
             }
         }
-    }
-
-else{
-
-
-    echo '<h2>Login Form CollegeDB</h2>';
-
-    echo '<form name="postLoginHid" action="'.$thisScriptName.'" method="post">';	
-            echo '
-                <P>User name: 
-                <INPUT TYPE=text NAME=username value="" SIZE=12 MAXLENGTH=16></P>
-                <P>Password: 
-                <INPUT TYPE=password NAME=password value="" SIZE=12 MAXLENGTH=16></P>
-                <input type="submit"  value="Login" />
-            ';
-    echo '</form>';
-    echo '<h2>--------- END Login Form --------</h2>';
-    }
-
+    
+}
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="..\includes\bootstrap-4.3.1-dist\css\bootstrap.min.css">
+  <script src="..\includes\jquery.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script> -->
+  <script src="..\includes\bootstrap-4.3.1-dist\js\bootstrap.min.js"></script>
+  <style> 
+  /* #username,#pwd{
+      width:50%;  
+  } */
+  
+  body{
+    background-image: url("../includes/back.jpg");
+  }
+.container{
+  margin-top:200px;
+  align-content: center;
+}
+.card-body{
+  background-color : rgb(26, 68, 99);
+}
+
+  
+  
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class ="card h-center" style="width:450px; margin:0 auto;">
+        <div class="card-body">
+        <h2 style="text-align:center; color: teal">Login Form</h2>
+
+		<form action="loginForm.php" method=post>
+			<div class="form-group">
+			<label for="username">Username:</label>
+			<input type="text" class="form-control" id="username" placeholder="Enter Username" name="username">
+			</div>
+			<div class="form-group">
+			<label for="pwd">Password:</label>
+			<input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
+			</div>
+			<div class="form-group form-check">
+			<label class="form-check-label">
+				<input class="form-check-input" type="checkbox" name="remember"> Remember me
+			</label>
+			</div>
+			<button type="submit" class="btn btn-info">Login</button>
+		</form>
+		<br>
+		<a href="signup.php" class="btn btn-info" role="button" style="text-align:center">Sign Up</a>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

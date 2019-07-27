@@ -1,78 +1,102 @@
 <?php
+$dbConnected = mysqli_connect("localhost","root","");
+echo '<link rel="stylesheet" href="..\includes\bootstrap-4.3.1-dist\css\bootstrap.min.css">
+  <script src="..\includes\jquery.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script> -->
+  <script src="..\includes\bootstrap-4.3.1-dist\js\bootstrap.min.js"></script>';
+$thisScriptName = "issueBook.php";
+echo '<link rel="stylesheet" href="../includes/menu.css" type="text/css">';
+echo '<div class="sidebar">';
+include_once("../includes/adminMenu.php");
+echo '</div>';
 
+echo '<div class=content>';
+{
+    if(@$_GET["updated"]){
+        $bookName = $_POST["book"];
+        if(isset($bookName)){
+            $searchQuery = "SELECT * FROM collegeDB.books WHERE BookName = '$bookName'";
+            if($arr = mysqli_fetch_array(mysqli_query($dbConnected, $searchQuery))){
+                if($arr[2]==1){
+                    $bookID = $arr[0]; 
+                    setcookie('bookID',$bookID,time()+60*60*24*365,"/");
+                    echo '<div class="container">
+                    <div class ="card h-center" style="width:450px; margin:0 auto;">
+                    <div class="card-body">
+                    <h2 style="text-align:center; color: teal">Issue to</h2>
 
-    $dbConnected = mysqli_connect("localhost", "root","" );
-    $dbSelect = mysqli_select_db($dbConnected, "collegeDB");
-    $student = $_POST["student"];
+                    <form action= "issueTo.php" method="post">
+                        <div class="form-group">
+                        <label for="student">Student Name:</label>
+                        <input type="text" class="form-control" id="student" placeholder="Enter Student Name" name="student">
+                        </div>
+                        <button type="submit" class="btn btn-info">Issue</button>
+                    </form>
+                    </div>
+                    </div>
 
-    if(isset($student)){        
-            $getRecords = "SELECT BookCount FROM collegeDB.libraryRecords WHERE RegistrationNo = '$student'";
-            if($row = mysqli_fetch_array(mysqli_query($dbConnected, $getRecords))){
-                $count = $row[0];
-            }
-            else{
-                die("Statement not executed");
-            }
-            if($count>3){
-                echo "3 books already issued";
-                echo '<a href="../index.php"> Homepage</a>';
-            }
-            else{
-                $updateQuery = "UPDATE collegeDB.books SET Available =0, IssuedTo = '$student'";
-                $updateLibrary = "UPDATE collegeDB.libraryRecords SET BookCount = BookCount +1";
-                if(mysqli_query($dbConnected,$updateQuery) AND mysqli_query($dbConnected,$updateLibrary)) {
-                    echo "Book issued";
+                    </div>';
+                    // echo '<form action= "issueTo.php" method="post">';
+                    //     echo '<input type = text name =  "student">';
+                    //     echo '<input type = submit value =Search Student>'; 
+                    // echo '</form>';
                 }
-                else{
-                    die("Failed to issue");
+                else{ echo '<div class="container">
+                    <div class ="card h-center" style="width:450px; margin:0 auto;">
+                    <div class="card-body">
+                    <h2 style="text-align:center; color: teal">Sorry, Book issued already</h2>';
+            
+                            echo '</div></div></div>';
+
                 }
-                
-
-
-            
-            
-            }
-            }
-    $thisScriptName = "issueBook.php";
-    $bookName = $_POST["book"];
-    $searchQuery = "SELECT * FROM collegeDB.books WHERE BookName ='$bookName'";
-    echo $searchQuery;
-    if($row = mysqli_query($dbConnected , $searchQuery)){
-        $arr = mysqli_fetch_array($row);
-            $id= $arr[0];
-            $bookName = $arr[1];
-            $available = $arr[2];
-            if($available){
-                
-
-
-                // }
-                // else{
-                    echo '<form action ='.$thisScriptName.' method = post>';
-                    echo 'Issue to:';
-                    echo '<input type = text name = student>';
-                    echo '<input type= submit value ="Issue">';
-                    echo '</form>';
-                // }
-
-
-
-
-
-
 
             }
-            else{
-                echo 'Sorry, Book not available';
+            else{echo '<div class="container">
+                <div class ="card h-center" style="width:450px; margin:0 auto;">
+                <div class="card-body">
+                <h2 style="text-align:center; color: teal">Book Not Found</h2>';
+        
+                        echo '</div></div></div>';
             }
-            
         }
-    
+        else{
+            header("Location: issueBook.php");
+        }
+
+    }
 
 
 
+    else{
+        // echo "Book Name: ";
+
+        // echo '<form action= "'.$thisScriptName.'?updated=1" method="post">';
+        //     echo '<input type = text name =  "book">';
+        //     echo '<input type = submit value =Search Book>';
+        // echo '</form>';
+        echo '<div class="container">
+                    <div class ="card h-center" style="width:450px; margin:0 auto;">
+                    <div class="card-body">
+                    <h2 style="text-align:center; color: teal">Book Name</h2>
+
+                    <form action= "'.$thisScriptName.'?updated=1" method="post">
+                    <div class="form-group">
+                        <label for="book">Book Name:</label>
+                        <input type="text" class="form-control" id="book" placeholder="Enter Book Name" name="book">
+                        </div>
+                        <button type="submit" class="btn btn-info">Search Book</button>
+                    </form>
+                    </div>
+                    </div>
+
+                    </div>';
+
+    }
 
 
+}
+
+echo '</div>';
 
 
 
