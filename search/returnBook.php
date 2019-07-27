@@ -23,8 +23,8 @@ echo '<div class=sidebar>';
         $selectBook = "SELECT * FROM collegeDB.books WHERE BookID =$bookID";
         // echo $selectBook;
         if($row = @mysqli_fetch_array(mysqli_query($dbConnected, $selectBook))){
-            $issuedTo = $row[3];
-            $available = $row[2];
+            $issuedTo = $row[4];
+            $available = $row[3];
         
         }
         else{

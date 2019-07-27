@@ -80,7 +80,7 @@ if($dbSuccess){
 
     $createBook = "CREATE TABLE ".$dbName.".books ( ";
     $createBook .= "BookID INT(11) PRIMARY KEY, ";
-    $createBook .= "BookName VARCHAR(50), Available INT(11) NOT NULL, IssuedTo VARCHAR(50))";
+    $createBook .= "BookName VARCHAR(50), Author VARCHAR(50), Available INT(11) NOT NULL, IssuedTo VARCHAR(50))";
     echo ''.$createBook;
     if(mysqli_query($dbConnected, $createBook)){
         echo '<br>Success';
@@ -112,10 +112,10 @@ if($dbSuccess){
 
     $createStudentRecordTable = "CREATE TABLE ".$dbName.".employeeRecords ( ";
     $createStudentRecordTable .= "ID INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, ";
-    $createStudentRecordTable .= "empType VARCHAR(50) NOT NULL UNIQUE KEY, ";
+    $createStudentRecordTable .= "empType VARCHAR(50) NOT NULL, ";
     $createStudentRecordTable .= "Name VARCHAR(250), ";
     $createStudentRecordTable .= "Parentage VARCHAR(100), Address VARCHAR(250), ";
-    $createStudentRecordTable .= "PhoneNo INT(20), Speciality VARCHAR(11) ";
+    $createStudentRecordTable .= "PhoneNo INT(20), Speciality VARCHAR(11) NULL ";
     $createStudentRecordTable .= ")";
     echo $createStudentRecordTable;
 
@@ -127,8 +127,26 @@ if($dbSuccess){
         echo "Failed to create table";
 
     }
+    $insertQuery = "INSERT INTO ".$dbName.".books (";
+    $insertQuery .= "BookID, BookName, Author ) ";
+    $insertQuery .= "VALUES (1, 'Computer Science', 'Kitchee'), (2,'Brief History of Time','S.Hawking'),(3,'Data Structures','B. Swamy'), (4,'Organic Chemistry', 'Morrison')";
+    echo $insertQuery;
+    mysqli_query($dbConnected, $insertQuery);
+    $insertQuery = "INSERT INTO ".$dbName.".employeeRecords (";
+    $insertQuery .= " ID ,  empType ,  Name ,  Parentage ,  Address ,  PhoneNo ,  Speciality )";
+    $insertQuery .= " VALUES (1, 'teacher', 'Azad','Riyaz','Tengpora', 70000000, 'CS'), 
+                                (2, 'teacher', 'Owais','Fayaz','Soura', 7000043500, 'CS'),
+                                    (3, 'librarian', 'G.Mohammad','Abdullah','Soura', 704350000,NULL),
+                                    (4, 'accounts', 'Azad','Riyaz','Tengpora', 70000000, NULL),
+                                    (5, 'academics', 'Azad','Riyaz','Tengpora', 70000000,NULL)";
+                                    echo $insertQuery;
+                   
+ if(mysqli_query($dbConnected, $insertQuery)){
+     echo 'success';
+ }
 
-
+                                    
+    
 
 
 // {

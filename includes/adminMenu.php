@@ -4,14 +4,21 @@ $accessLevel =$_COOKIE["accessLevel"];
 
 
 // echo '<div class=sidebar>';
-if($accessLevel>21){
+if($accessLevel==99){
 
 
     echo '<a href="/studentDMS/search/marksRecords.php"> Marks Records</a> 
     <a href = "/studentDMS/search/feeRecords.php"> Fee Records</a> ';
     echo '<a href="/studentDMS/search/employeeList.php"> Employee List</a>';
     echo '<a href="/studentDMS/search/studentList.php">Student List</a>';
+    echo '<a href="/studentDMS/search/libraryRecords.php"> Library Records</a>';
 
+
+
+}
+else if($accessLevel==31){
+    echo '<a href="/studentDMS/search/marksRecords.php"> Marks Records</a> 
+    <a href = "/studentDMS/search/feeRecords.php"> Fee Records</a> ';
 
 }
 else if($accessLevel == 21){

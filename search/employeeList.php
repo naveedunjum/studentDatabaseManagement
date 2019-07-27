@@ -32,7 +32,7 @@ if(isset($empType)){
             echo '<tr>';
 
             $ii=0;
-            while(@$arr[$i][$ii]){
+            while($ii<7){
                 echo '<td>'.$arr[$i][$ii].'</td>';
                 $ii++;
             
