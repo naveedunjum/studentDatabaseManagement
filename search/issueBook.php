@@ -17,7 +17,7 @@ echo '<div class=content>';
         if(isset($bookName)){
             $searchQuery = "SELECT * FROM collegeDB.books WHERE BookName = '$bookName'";
             if($arr = mysqli_fetch_array(mysqli_query($dbConnected, $searchQuery))){
-                if($arr[2]==1){
+                if($arr[3]==1){
                     $bookID = $arr[0]; 
                     setcookie('bookID',$bookID,time()+60*60*24*365,"/");
                     echo '<div class="container">
