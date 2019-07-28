@@ -1,0 +1,28 @@
+ 
+table {
+    font-family: sans-serif;
+    border-collapse: collapse;
+    width: 75%;
+    align-content: center;
+    margin-left:40px;
+  }
+  table th{
+      width:25%;
+  }
+  
+  table td, table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  table tr:nth-child(even){background-color: #ddd;}
+  
+  table tr:hover {background-color: #ddd;}
+  
+  table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: teal;
+    color: white;
+  }

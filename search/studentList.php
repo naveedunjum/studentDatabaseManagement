@@ -12,10 +12,27 @@
     }
     //	END	Secure Connection Script
 }
-echo '<link rel="stylesheet" href="../includes/menu.css" type="text/css">';
-echo '<div class=sidebar>';
-include_once("../includes/adminMenu.php");
-echo '</div>';
+  
+echo '<link rel="stylesheet" href="..\includes\bootstrap-4.3.1-dist\css\bootstrap.min.css">
+<script src="..\includes\jquery.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script> -->
+<script src="..\includes\bootstrap-4.3.1-dist\js\bootstrap.min.js"></script>';
+echo '<link rel="stylesheet" href="../includes/styling.css" type="text/css">';
+echo '<body>
+<header>';
+include_once("../includes/head.php");
+
+
+
+echo'
+</header>';
+echo '
+<div class="flex-container">
+  <aside>';
+    include_once("../includes/adminMenu.php");
+    echo '
+  </aside
+  <main>';
 
 echo '<div class=content>';
 $sem = @$_POST["semester"];
@@ -49,7 +66,6 @@ if(isset($sem)){
         $i++;
         echo "</tr>";
 }}
-echo '</div>';
 
 
 
@@ -70,12 +86,7 @@ echo '</div>';
 
 
 else{
-     
-    echo '<link rel="stylesheet" href="..\includes\bootstrap-4.3.1-dist\css\bootstrap.min.css">
-    <script src="..\includes\jquery.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script> -->
-    <script src="..\includes\bootstrap-4.3.1-dist\js\bootstrap.min.js"></script>';
-    
+   
                 echo '
                     <div class="container">
                     <div class ="card h-center" style="width:450px; margin:0 auto;">
@@ -105,4 +116,10 @@ else{
     
     
 }
+
+echo '</div>
+</main>
+</div>';
+
+
 ?>

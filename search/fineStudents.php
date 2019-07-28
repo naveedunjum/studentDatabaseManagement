@@ -12,12 +12,28 @@
             $dbSuccess = true;
         } 	
     }
-    echo '<link rel="stylesheet" href="../includes/menu.css" type="text/css">';
+    echo '<link rel="stylesheet" href="../includes/styling.css" type="text/css">';
+echo '<body>
+<header>';
+include_once("../includes/head.php");
 
-    echo '<div class=sidebar>';
+
+
+echo'
+</header>';
+echo '
+<div class="flex-container">
+  <aside>';
+    include_once("../includes/adminMenu.php");
+    echo '
+  </aside
+  <main>';
+    // echo '<link rel="stylesheet" href="../includes/menu.css" type="text/css">';
+
+    // echo '<div class=sidebar>';
     
-        include_once("../includes/adminMenu.php");
-    echo '</div>';
+    //     include_once("../includes/adminMenu.php");
+    // echo '</div>';
 echo '<div class=content>';
 
 if($row = @mysqli_fetch_all(mysqli_query($dbConnected, "SELECT * FROM collegeDB.libraryRecords WHERE FINE>0"))){
@@ -46,9 +62,12 @@ if($row = @mysqli_fetch_all(mysqli_query($dbConnected, "SELECT * FROM collegeDB.
 
 
     }
-    echo '</div>';
 
 }
+
+echo '</div>
+</main>
+</div>';
 
 
 

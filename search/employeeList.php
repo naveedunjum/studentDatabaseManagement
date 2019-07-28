@@ -11,10 +11,23 @@
             $dbSuccess = true;
         } 	
     }
-    echo '<link rel="stylesheet" href="../includes/menu.css" type="text/css">';
-    echo '<div class=sidebar>';
-    include_once("../includes/adminMenu.php");
-    echo '</div>';
+    echo '<link rel="stylesheet" href="..\includes\bootstrap-4.3.1-dist\css\bootstrap.min.css">
+    <script src="..\includes\jquery.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script> -->
+    <script src="..\includes\bootstrap-4.3.1-dist\js\bootstrap.min.js"></script>';
+    echo '<link rel="stylesheet" href="../includes/styling.css" type="text/css">';
+    echo '<body>
+    <header>';
+    include_once("../includes/head.php");
+    echo'
+    </header>';
+    echo '
+    <div class="flex-container">
+      <aside>';
+        include_once("../includes/adminMenu.php");
+        echo '
+      </aside
+      <main>';
    
 echo '<div class=content>';
 $empType = @$_POST["empType"];
@@ -29,7 +42,7 @@ if(isset($empType)){
           </tr>';
           
         while(@$arr[$i]){
-            echo '<tr>';
+            echo '<tr>'; 
 
             $ii=0;
             while($ii<7){
@@ -42,7 +55,7 @@ if(isset($empType)){
 
     }
 echo '</table>';}
-    echo '</div>';
+    
 
 }
 
@@ -53,10 +66,7 @@ echo '</table>';}
 
 else{
     
-    echo '<link rel="stylesheet" href="..\includes\bootstrap-4.3.1-dist\css\bootstrap.min.css">
-    <script src="..\includes\jquery.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script> -->
-    <script src="..\includes\bootstrap-4.3.1-dist\js\bootstrap.min.js"></script>';
+   
     
                 echo '
                     <div class="container">
@@ -85,6 +95,9 @@ else{
     
 }
 }
+echo '</div>
+</main>
+</div>';
 
 
 

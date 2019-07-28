@@ -2,10 +2,32 @@
 // echo 'style = background-color:blue';
     // echo '<link rel="stylesheet" type="text/css" href="styling.css">';
 $dbConnected  = mysqli_connect("localhost", "root","");
+echo '<link rel="stylesheet" href="..\includes\bootstrap-4.3.1-dist\css\bootstrap.min.css">
+    <script src="..\includes\jquery.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script> -->
+    <script src="..\includes\bootstrap-4.3.1-dist\js\bootstrap.min.js"></script>';
+
+echo '<link rel="stylesheet" href="../includes/styling.css" type="text/css">';
+echo '<body>
+<header>';
+include_once("../includes/head.php");
+
+
+
+echo'
+</header>';
+echo '
+<div class="flex-container">
+  <aside>';
+    include_once("../includes/adminMenu.php");
+    echo '
+  </aside
+  <main>';
+  echo '<div class=content>';
 
 $regNo= $_COOKIE["username"];
 $thisScriptName = "stdUpdate.php";
-$updated= $_GET["updated"];
+$updated= @$_GET["updated"];
 if(isset($updated)){
 
     $name = $_POST["name"];
@@ -38,15 +60,7 @@ else{
         $add = $row[5];
 
     }
-    echo '<link rel="stylesheet" href="..\includes\bootstrap-4.3.1-dist\css\bootstrap.min.css">
-    <script src="..\includes\jquery.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script> -->
-    <script src="..\includes\bootstrap-4.3.1-dist\js\bootstrap.min.js"></script>';
-  echo '<link rel="stylesheet" href="../includes/menu.css" type="text/css">';
-  echo '<div class=sidebar>';
-  include_once("../includes/adminMenu.php");
-  echo '</div>';
-  echo '<div class=content>';
+    
 
 //     echo '<link rel="stylesheet" href="..\includes\bootstrap-4.3.1-dist\css\bootstrap.min.css">
 //     <script src="..\includes\jquery.js"></script>';
@@ -72,9 +86,9 @@ else{
 echo '<div class="container">
 <div class ="card h-center" style="width:450px; margin:0 auto;">
     <div class="card-body">
-        <h3 style="text-align:center; color: teal">Sign Form</h3>';
+        <h3 style="text-align:center; color: teal">Update Form</h3>';
     
-    echo '<h2> Update Details</h2>';
+    // echo '<h2> Update Details</h2>';
     echo '<form action="'.$thisScriptName.'?updated=1" method="post">';
 
     echo '<div class="form-group">
@@ -119,7 +133,10 @@ echo '<div class="container">
 
 
             }
-            echo '</div>';
-
+            echo '</div>
+            </main>
+            </div>
+            </body>';
+            
 
         ?>

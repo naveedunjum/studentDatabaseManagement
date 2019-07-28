@@ -1,0 +1,92 @@
+  body {
+margin: 0 20px;
+}
+
+header {
+position: sticky;
+top: 0;
+background: rgb(73, 128, 150);
+height: 60px;
+margin-bottom: 20px;
+padding: 0 20px;
+z-index: 10;
+
+/* for positioning text, links, etc */
+display: flex;
+align-items: center;
+}
+
+.flex-container {
+display: flex;
+}
+
+aside {
+position: sticky;
+top: 80px; /* the height of the header (60px) + its bottom margin (20px) */
+background: rgb(180, 172, 172);
+/* padding: 20px; */
+width: 15%;
+height: 1400px;
+margin-bottom: 20px;
+}
+aside a {
+display: block;
+color: black;
+padding: 16px;
+text-decoration: none;
+}
+
+/* Active/current link */
+aside a.active {
+background-color: teal;
+color: white;
+}
+
+/* Links on mouse-over */
+aside a:hover:not(.active) {
+background-color: teal;
+color: white;
+}
+
+main {
+/* padding-left: 20px; */
+flex-grow: 1;
+
+}
+
+.content {
+background: teal;
+height: 1400px;
+padding: 20px;
+margin-bottom: 20px;
+width:100%;
+}
+
+  
+table {
+  font-family: sans-serif;
+  border-collapse: collapse;
+  width: 75%;
+  align-content: center;
+  margin-left:40px;
+}
+table th{
+    width:25%;
+}
+
+table td, table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+table tr:nth-child(even){background-color: #ddd;}
+
+table tr:hover {background-color: #ddd;}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: teal;
+  color: white;
+}
