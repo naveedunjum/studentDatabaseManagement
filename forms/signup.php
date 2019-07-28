@@ -155,6 +155,17 @@ $count=0;
   <script src="..\includes\jquery.js"></script>
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script> -->
   <script src="..\includes\bootstrap-4.3.1-dist\js\bootstrap.min.js"></script>
+  <!-- jQuery to hide the Roll No and Semester when usertype isnt student -->
+  <script>
+  $(document).ready(function(){
+  $("#admin,#lib,#acc,#aca").click(function(){
+    $("#hide").hide();
+  });
+  $("#std").click(function(){
+    $("#hide").show();
+  });
+  
+});</script>
   <style> 
   /* #username,#pwd{
       width:50%;  
@@ -196,11 +207,11 @@ input{
     <div class="form-group">
         <label for="usertype">User Type:</label>
         <select class="form-control" id="usertype" name="userType">
-        <option value="student">Student</option>
-        <option value="admin">Admin</option>
-        <option value="librarian">Librarian</option>
-        <option value="accounts">Accounts</option>
-        <option value="academics">Academics</option>
+        <option value="student" id="std">Student</option>
+        <option value="admin" id="admin">Admin</option>
+        <option value="librarian" id="lib">Librarian</option>
+        <option value="accounts" id="acc">Accounts</option>
+        <option value="academics" id="aca">Academics</option>
         </select>
       </div> 
     <div class="form-group">
@@ -219,6 +230,7 @@ input{
         <label for="address">Address:</label>
         <input type="address" class="form-control" id="address" placeholder="Enter Address" name="studentAddress">
       </div>
+      <div id=hide>
       <div class="form-group">
         <label for="Rno">Roll No:</label>
         <input type="Roll No" class="form-control" id="Rno" placeholder="Enter Roll No" name="studentRno">
@@ -237,13 +249,14 @@ input{
           <option value=8>8</option>
         </select>
       </div> 
+</div>
       <div class="form-group">
             <label for="Pno">Phone No:</label>
             <input type="text" class="form-control" id="Pno" placeholder="Enter Phone No" name="studentPNo">
       </div>
     <div class="form-group">
       <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
+      <input type="password" class="form-control" id="pwd" placeholder="password(more than 8 characters)" name="password">
     </div>
     
     <button type="submit" class="btn btn-info">Sign Up</button>
