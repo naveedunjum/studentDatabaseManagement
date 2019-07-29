@@ -43,6 +43,8 @@ else if($accessLevel == 21){
 
 }
 else if($accessLevel==11){
+    echo '<a href="/studentDMS/search/studentList.php">Student List</a>';
+
     echo '<a href = "/studentDMS/search/feeRecords.php"> Fee Records</a> ';
     echo '<a href = "/studentDMS/search/notPaid.php"> Students Not Paid</a> ';
 

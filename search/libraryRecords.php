@@ -1,5 +1,7 @@
 <?php
 $dbConnected = mysqli_connect("localhost","root","");
+include_once("../includes/calculate_due.php");
+
 echo '<link rel="stylesheet" href="..\includes\bootstrap-4.3.1-dist\css\bootstrap.min.css">
   <script src="..\includes\jquery.js"></script>
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script> -->

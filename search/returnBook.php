@@ -1,5 +1,6 @@
 <?php
     $dbConnected = mysqli_connect("localhost", "root","");
+    include_once("../includes/calculate_due.php");
     if(@$_GET["fine"]==1){
         $regNo = $_POST['regNo'];
         // echo $regNo;

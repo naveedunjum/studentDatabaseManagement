@@ -20,18 +20,6 @@ if(@$_GET["updated"]==1){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 else{
 echo '
 <!DOCTYPE html>

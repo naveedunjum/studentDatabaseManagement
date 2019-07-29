@@ -1,6 +1,5 @@
 <?php
 
-
 { 		//	Secure Connection Script
     include('../includes/dbConfig.php'); 
     $dbSuccess = false;
@@ -11,7 +10,9 @@
         if ($dbSelected) {
             $dbSuccess = true;
         } 	
-    }
+    }}
+    include_once("../includes/calculate_due.php");
+
     echo '<link rel="stylesheet" href="../includes/styling.css" type="text/css">';
 echo '<body>
 <header>';
@@ -66,7 +67,6 @@ if($row = @mysqli_fetch_all(mysqli_query($dbConnected, "SELECT * FROM collegeDB.
         echo '<h1>No students with Fine</h1>';
     }
 
-}
 
 echo '</div>
 </main>
