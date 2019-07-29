@@ -48,6 +48,7 @@
         //     echo "<br>";
         //     $i++;
         //     }
+        echo '<h2 align=center>Fee Records<h2>';
             echo '<table border=1>';
             echo '<tr>';
             echo '<th>ID</th> <th>RegistrationNo</th> <th>Name</th> <th>Semester</th><th>Status</th>  ';
@@ -63,9 +64,20 @@
             echo '</tr>';
 
             echo '</table>';
-        }
-        echo '<br>';
+            echo '<br>';
         echo '<a href="feeUpdate.php" class="btn btn-info" role="button" style="text-align:center">Update</a>';
+        }
+        
+        else{
+            echo '<div class="container">
+        <div class ="card h-center" style="width:450px; margin:0 auto;">
+        <div class="card-body">
+        <h2 style="text-align:center; color: teal">Student not found</h2>
+        </div>
+        </div>
+
+        </div>';
+        }
 
         // echo '</div>';
 

@@ -19,7 +19,10 @@ align-items: center;
 .flex-container {
 display: flex;
 }
-
+h1{
+  padding:10px;
+  font-weight: bold;  font-family: "Arial Black", Gadget, sans-serif;  font-size: 40px;
+}
 aside {
 position: sticky;
 top: 80px; /* the height of the header (60px) + its bottom margin (20px) */

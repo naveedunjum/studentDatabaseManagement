@@ -178,19 +178,30 @@ $count=0;
   }
   
   body{
-    background-image: url("../includes/back.jpg");
+    background-color: rgb(220,220,220);
   }
 .container{
   /* margin-top:100px; */
   height: 90%;
   align-content: center;
   font-size:14px;
+  float:right;
 }
 .card-body{
-  background-color : rgb(26, 68, 99);
+  /* background-color : rgb(26, 68, 99); */
 }
 input{
   height:100px;
+  }
+  img{
+	  border-radius:20px;
+  }
+  .logo{
+	  float:left;
+	  margin-top :100px;
+	  /* width:100px; */
+	  height:100%;
+	  
   }
 
 
@@ -199,6 +210,11 @@ input{
   </style>
 </head>
 <body>
+<div class=logo>
+		<h2 style="margin-left:2.5em"> National Institute of Technology</h2>
+		<br><br><
+				<img src="../includes/logo.jpg" style="margin-left:5em">
+</div>
 
 <div class="container">
   <div class ="card h-center" style="width:450px; margin:0 auto;">
@@ -219,7 +235,7 @@ input{
       </div> 
     <div class="form-group">
       <label for="username">Username:</label>
-      <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username">
+      <input type="text" class="form-control" id="username" placeholder="Students should enter Registration No" name="username">
     </div>
     <div class="form-group">
         <label for="name">Name:</label>

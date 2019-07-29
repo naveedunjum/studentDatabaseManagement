@@ -1,6 +1,6 @@
 <?php
     $dbConnected = mysqli_connect("localhost", "root","");
-    $thisScriptName = "marksUpdate.php";
+    $thisScriptName = "n.php";
     $regNo = $_COOKIE["regNo"];
     // echo $regNo;
     echo '<link rel="stylesheet" href="..\includes\bootstrap-4.3.1-dist\css\bootstrap.min.css">
@@ -25,14 +25,8 @@ echo '
   <main>';
   echo '<div class=content>';
     if(@$_GET["updated"]){
-        updateValues('Semester1', $_POST["first"]);
-        updateValues('Semester2', $_POST["second"]);
-        updateValues('Semester3', $_POST["third"]);
-        updateValues('Semester4', $_POST["fourth"]);
-        updateValues('Semester5', $_POST["fifth"]);
-        updateValues('Semester6', $_POST["sixth"]);
-        updateValues('Semester7', $_POST["seventh"]);
-        updateValues('Semester8', $_POST["eighth"]);
+        updateMarks($_POST["first"],$_POST["second"],$_POST["third"],$_POST["fourth"],$_POST["fifth"],$_POST["sixth"],$_POST["seventh"],$_POST["eighth"]);
+        
     }
     else{
 
@@ -52,43 +46,43 @@ echo '
     <div class="card-body">
         <h3 style="text-align:center; color: teal">Sign Form</h3>
 
-        <form action= "'.$thisScriptName.'?updated=1" method="post">
+        <form action= "n.php?updated=1" method="post">
  
   <div class="form-group">
     <input type = hidden name = regNo value="'.$regNo.'">
     </div>
   <div class="form-group">
       <label for="name">First Semester Marks:</label>
-      <input type="text" class="form-control" id="name" placeholder="Enter Name" name="first" value ="'.$arr[2].'">
+      <input type="text" class="form-control" id="name" name="first" value ="'.$arr[2].'">
     </div>
     <div class="form-group">
       <label for="parentage">Second Semester Marks:</label>
-      <input type="text" class="form-control" id="parentage" placeholder="Enter Parentage" name="second" value ="'.$arr[3].'">
+      <input type="text" class="form-control" id="parentage" name="second" value ="'.$arr[3].'">
     </div>
     <div class="form-group">
       <label for="address">Third Semester Marks:</label>
-      <input type="address" class="form-control" id="address" placeholder="Enter Address" name="third" value ="'.$arr[4].'">
+      <input type="address" class="form-control" id="address"  name="third" value ="'.$arr[4].'">
     </div>
     <div class="form-group">
       <label for="Rno">Fourth Semester Marks:</label>
-      <input type="Roll No" class="form-control" id="Rno" placeholder="Enter Roll No" name="fourth" value ="'.$arr[5].'">
+      <input type="Roll No" class="form-control" id="Rno" name="fourth" value ="'.$arr[5].'">
     </div>
   
     <div class="form-group">
           <label for="Pno">Fifth Semester Marks:</label>
-          <input type="text" class="form-control" id="Pno" placeholder="Enter Phone No" name="fifth" value ="'.$arr[6].'">
+          <input type="text" class="form-control" id="Pno"  name="fifth" value ="'.$arr[6].'">
     </div>
   <div class="form-group">
   <label for="pwd">Sixth Semester Marks:</label>
 
-    <input type="text" class="form-control" id="pwd" placeholder="Enter password" name="sixth" value ="'.$arr[7].'">
+    <input type="text" class="form-control" id="pwd"  name="sixth" value ="'.$arr[7].'">
   </div>
   <div class="form-group">
           <label for="Pno">Seventh Semester Marks:</label>
-          <input type="text" class="form-control" id="Pno" placeholder="Enter Phone No" name="seventh" value ="'.$arr[8].'">
+          <input type="text" class="form-control" id="Pno" name="seventh" value ="'.$arr[8].'">
     </div><div class="form-group">
     <label for="Pno">Eighth Semester Marks:</label>
-    <input type="text" class="form-control" id="Pno" placeholder="Enter Phone No" name="eighth" value ="'.$arr[9].'">
+    <input type="text" class="form-control" id="Pno"  name="eighth" value ="'.$arr[9].'">
 </div>
   
   <button type="submit" class="btn btn-info">Update Marks</button>
@@ -103,30 +97,51 @@ echo '
     </body>';
     
 
-
-function updateValues($par, $val){
-    global $dbConnected;
-    global $regNo;
-    if(isset($val) && (!empty($val))){
-                // echo ''.$val;
-                
-                // echo '<br>'.$regNo;
-        $updateName = "UPDATE collegeDB.marks SET ";
-        $updateName .= "$par = $val";
-        $updateName .= " WHERE RegistrationNo = '$regNo'";
-        echo '<br>'.$updateName;
-        if(mysqli_query($dbConnected, $updateName)){
-                    // echo '<br>Success';
-                }
-                else{
-                    // echo 'FAiled';
+    function updateMarks() {
+        global $dbConnected;
+        global $regNo;
+        $arr = array("first","second","third","fourth","fifth","sixth","seventh","eighth");
+        // $arg1 = func_get_arg(0);
+        // echo $arg1;
+        // $arg3=func_get_arg(3);
+        // echo $arg3;
+        $i=1;
+        $updateQuery="UPDATE collegeDB.marks SET ";
+        while($i<9){
+            $updateQuery .= " Semester".$i."";
+            $updateQuery .= ' ='.$_POST[$arr[$i-1]];
+            if($i!=8){
+                $updateQuery.=",";
             }
-        
-            }
-            if($par=="Semester8"){
-                header("Location: marksRecords.php?updated=1");
-            }
-            }
+    
+            
+            $i++;
+        }
+        $updateQuery.=' WHERE RegistrationNo = "'.$regNo.'"';
+        echo $updateQuery;
+        if(mysqli_query($dbConnected,$updateQuery)){
+            header("Location: marksRecords.php?updated=1");
+        }
+        else{
+          echo "Failed to update marks";
+        }
+    
+        //Do some type checking to see which argument it is.
+        //check if there is another argument with func_num_args.
+        //Do something with the second arg.
+     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    ?>
 
 
 

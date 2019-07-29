@@ -90,21 +90,39 @@ $username = @$_POST["username"];
   } */
   
   body{
-    background-image: url("../includes/back.jpg");
+    /* background-image: url("../includes/back.jpg"); */
+	background-color:rgb(220,220,220);
   }
 .container{
-  margin-top:200px;
+	float:right;
+  margin-top:100px;
   align-content: center;
 }
 .card-body{
-  background-color : rgb(26, 68, 99);
+  /* background-color : rgb(26, 68, 99); */
+  margin-top:0;
+
 }
 
-  
+  .logo{
+	  float:left;
+	  margin-top :100px;
+	  /* width:100px; */
+	  height:100%;
+	  
+  }
+  img{
+	  border-radius:20px;
+  }
   
   </style>
 </head>
 <body>
+	<div class=logo>
+		<h2 style="margin-left:2.5em"> National Institute of Technology</h2>
+		<br><br><
+				<img src="../includes/logo.jpg" style="margin-left:5em">
+</div>
 
 <div class="container">
   <div class ="card h-center" style="width:450px; margin:0 auto;">
@@ -120,11 +138,11 @@ $username = @$_POST["username"];
 			<label for="pwd">Password:</label>
 			<input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
 			</div>
-			<div class="form-group form-check">
+			<!-- <div class="form-group form-check">
 			<label class="form-check-label">
 				<input class="form-check-input" type="checkbox" name="remember"> Remember me
 			</label>
-			</div>
+			</div> -->
 			<button type="submit" class="btn btn-info">Login</button>
 		</form>
 		<br>

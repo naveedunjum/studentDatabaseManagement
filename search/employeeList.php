@@ -36,6 +36,7 @@ if(isset($empType)){
 
     if($arr = mysqli_fetch_all(mysqli_query($dbConnected, "SELECT * FROM collegeDB.employeeRecords WHERE empType='$empType'"))){
         $i=0;
+        echo '<h2 align =center>'.$empType.' list</h2>';
         echo '<table border=1>
         <tr>
           <th>ID  </th>  <th>empType  </th>   <th>Name  </th><th>Parentage  </th><th>Address  </th> <th>Phone No  </th> <th>Speciality  </th>
@@ -55,6 +56,15 @@ if(isset($empType)){
 
     }
 echo '</table>';}
+else{
+    echo '
+    <div class="container">
+    <div class ="card h-center" style="width:450px; margin:0 auto;">
+        <div class="card-body">';
+        echo '<h2 style="text-align:center; color: teal">No such employees found</h2>
+    </div>
+<div>
+</div>';}
     
 
 }
@@ -79,6 +89,8 @@ else{
                         <div class="form-group">
                             <label for="sel1">Employee Type:</label>
                             <select class="form-control" id="sel1" name="empType">
+                            <option value="admin" id="admin">Admin</option>
+
                             <option value="teacher">Teacher List</a>
                             <option value="librarian">Librarians List</a>
                             <option value="accounts"> Accounts List</a>
@@ -88,6 +100,8 @@ else{
                         </div> 
                         <button type="submit" class="btn btn-info">Search</button>
                         </form>
+                        <a href="../forms/addEmp.php" class="btn btn-info" role="button" style="text-align:center">Add Employee</a>
+
                         </div>
                         </div>
                         </div>';
@@ -97,7 +111,7 @@ else{
 }
 echo '</div>
 </main>
-</div>';
+</div></body>';
 
 
 

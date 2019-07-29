@@ -39,7 +39,7 @@ echo '<div class=content>';
 if($row = @mysqli_fetch_all(mysqli_query($dbConnected, "SELECT * FROM collegeDB.libraryRecords WHERE FINE>0"))){
     $i=0;
         // echo '<link rel="stylesheet" href="../includes/table.css" type="text/css"';
-
+    echo '<h2> Students with Fine</h2>';
     echo '<table border=1 align=center>';
     echo '<tr>';
     echo '<th>ID</th>
@@ -61,6 +61,9 @@ if($row = @mysqli_fetch_all(mysqli_query($dbConnected, "SELECT * FROM collegeDB.
         echo '</table>';
 
 
+    }
+    else{
+        echo '<h1>No students with Fine</h1>';
     }
 
 }

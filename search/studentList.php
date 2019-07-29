@@ -49,6 +49,7 @@ if(isset($sem)){
     //         $i++;
     //         echo "<hr>";
     // }
+    echo '<h2 align=center>Student List</h2>';
     echo '<table border=1>
     <tr>
       <th>ID  </th>  <th>RegistrationNo  </th>   <th>RollNo  </th>   <th>Name  </th>   <th>Parentage  </th>
@@ -66,6 +67,15 @@ if(isset($sem)){
         $i++;
         echo "</tr>";
 }}
+else{
+    echo '
+    <div class="container">
+    <div class ="card h-center" style="width:450px; margin:0 auto;">
+        <div class="card-body">';
+        echo '<h2 style="text-align:center; color: teal">No students found</h2>
+    </div>
+<div>
+</div>';}
 
 
 

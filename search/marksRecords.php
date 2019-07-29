@@ -46,10 +46,11 @@ if($accessLevel==1){
         echo '</table>';
     
     }
+   
 
 
 }
-if($accessLevel>=31){
+if($accessLevel>=11){
     $thisScriptName = "marksRecords.php";
 
     if(@$_GET["updated"]==1){
@@ -65,8 +66,9 @@ if($accessLevel>=31){
     if(isset($regNo)){
         $selectQuery = "SELECT * FROM collegeDB.marks WHERE RegistrationNo ='$regNo'";
         // echo $selectQuery;
-        if($row =mysqli_fetch_array(mysqli_query($dbConnected, $selectQuery))){
+        if($row =@mysqli_fetch_array(mysqli_query($dbConnected, $selectQuery))){
             $i = 0;
+            echo '<h2 align=center>Marks Records<a>';
             echo '<table border=1>';
             echo '<tr>';
             echo '<th>ID</th> <th>RegistrationNo</th> <th>Semester1</th> <th>Semester2</th> <th>Semester3</th> <th>Semester4</th><th>Semester5</th>
@@ -87,11 +89,17 @@ if($accessLevel>=31){
             echo '<a href="marksUpdate.php" class="btn btn-info" role="button" style="text-align:center"> Marks Update</a>';
 
         }
-        // echo "<form name=marks action = 'marksUpdate.php' method = post>";
-        // echo   '<input type = hidden name=regNo value="'.$regNo.'">';
-        // echo '<input type=submit value="Update Marks">';
-        // echo '</form>';
-        // echo '<a href="marksUpdate.php"> Marks Update</a>';
+        else{
+            echo '<div class="container">
+        <div class ="card h-center" style="width:450px; margin:0 auto;">
+        <div class="card-body">
+        <h2 style="text-align:center; color: teal">Student not found</h2>
+        </div>
+        </div>
+
+        </div>';
+        }
+       
 
 
 
