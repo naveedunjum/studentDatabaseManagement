@@ -47,7 +47,27 @@ $username = @$_POST["username"];
                 // echo "set";
             }
             else{
-                echo "Login Failed";
+                // echo "Login Failed";
+                echo '<link rel="stylesheet" href="..\includes\bootstrap-4.3.1-dist\css\bootstrap.min.css">
+                <script src="..\includes\jquery.js"></script>
+                <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script> -->
+                <script src="..\includes\bootstrap-4.3.1-dist\js\bootstrap.min.js"></script>';
+                
+                echo '
+                <body background=  "../includes/back.jpg">
+
+
+                <div class="container" style=margin-top:200px;>
+                    <div class ="card h-center" style="width:450px; margin:0 auto;">
+                    <div class="card-body">
+                    <h2 style="text-align:center; color: teal">Login Failed</h2>
+                    <a href="loginForm.php" class="btn btn-info" role="button" style="text-align:center">Try Again</a>';
+
+            
+                            echo '</div></div></div></body>';
+
+                    exit();
+
             }
         }
     

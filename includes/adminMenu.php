@@ -29,6 +29,8 @@ else if($accessLevel == 21){
     echo '<a href="/studentDMS/search/issueBook.php"> Issue Book</a>';
    
     echo '<a href="/studentDMS/search/returnBook.php"> Return Book</a>';
+    echo '<a href="/studentDMS/search/books.php"> Book List</a>';
+
     echo '<a href="/studentDMS/search/libraryRecords.php"> Library Records</a>';
 
 

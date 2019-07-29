@@ -114,7 +114,9 @@ $count=0;
             header("Location: ../index.php");
             // echo 'Account Created';
           }
-          else{echo '<div class="container">
+          else{
+            echo '<body background=  "../includes/back.jpg">';
+            echo '<div class="container">
         <div class ="card h-center" style="width:450px; margin:0 auto;">
             <div class="card-body">
                 <h3 style="text-align:center; color: teal">SignUp failed</h3>
@@ -122,11 +124,12 @@ $count=0;
 
               </div>
             </div>
-          </div>';
+          </div></body>';
           exit();}
         }          
         
-      else{
+      else{           
+        echo '<body background=  "../includes/back.jpg">';
         echo '<div class="container">
         <div class ="card h-center" style="width:450px; margin:0 auto;">
             <div class="card-body">
@@ -135,7 +138,7 @@ $count=0;
 
               </div>
             </div>
-          </div>';
+          </div></body>';
           exit();
             
           }     

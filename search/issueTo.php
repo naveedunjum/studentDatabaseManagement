@@ -24,7 +24,7 @@ echo '<div class=content>';
     $bookID = $_COOKIE["bookID"];
     $student = $_POST["student"];
     $getQuery = "SELECT * FROM collegeDB.libraryRecords WHERE RegistrationNo ='$student'";
-    $row = mysqli_fetch_array(mysqli_query($dbConnected, $getQuery));
+    if($row = mysqli_fetch_array(mysqli_query($dbConnected, $getQuery))){
     if($row[2]<3){
         $i = 3; 
         while($row[$i]!=0 AND $i <6){
@@ -58,7 +58,7 @@ echo '<div class=content>';
             echo '<div class="container">
                 <div class ="card h-center" style="width:450px; margin:0 auto;">
                 <div class="card-body">
-                <h2 style="text-align:center; color: teal">Failed</h2>';
+                <h2 style="text-align:center; color: teal">Failed to Issue</h2>';
         
         echo '</div></div></div>';
         }
@@ -73,6 +73,15 @@ echo '<div class=content>';
         
         echo '</div></div></div>';
     }
+  }
+  else{
+    echo '<div class="container">
+            <div class ="card h-center" style="width:450px; margin:0 auto;">
+            <div class="card-body">
+            <h2 style="text-align:center; color: teal">Student Not Found</h2>';
+    
+    echo '</div></div></div>';
+}
 
     echo '</div>
     </main>
